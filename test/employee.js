@@ -1,7 +1,7 @@
 'use strict';
 var server = require('../server/server')
 var request = require('supertest')(server)
-describe('/Users test suite', function() {
+describe('/Employees test suite', function() {
 describe('login/logout for User', function() {
     it('should be able to create a employee without address', function(done) {
         request.post('/api/Employees')
@@ -37,6 +37,10 @@ describe('login/logout for User', function() {
                 address:'address2'
             })
             .expect(422, done);
+    });
+    it('Url not found', function(done) {
+        request.get('/api/Employees/fullname')
+            .expect(404, done);
     });
 });
 })
